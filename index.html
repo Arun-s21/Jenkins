@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gold's Gym | Fitness Redefined</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --gold: #f5c542;
+      --gold-soft: #ffde7a;
+      --dark: #050608;
+      --dark-soft: #10131a;
+      --gray: #a0a4b8;
+      --light: #f7f7fb;
+      --accent: #ff4b3a;
+      --radius-lg: 1.5rem;
+      --radius-md: 1rem;
+      --transition: 0.25s ease;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #181b28, #050608 55%);
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    /* NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.6));
+      border-bottom: 1px solid rgba(245, 197, 66, 0.18);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, var(--gold-soft), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 1.25rem;
+      font-weight: 800;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+    }
+
+    .logo-text-main {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
+    .logo-text-sub {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--gray);
+      letter-spacing: 0.12em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      position: relative;
+      padding-bottom: 0.2rem;
+      transition: color var(--transition);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--gold-soft), var(--gold));
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-phone {
+      color: var(--gray);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      border: none;
+      border-radius: 999px;
+      padding: 0.55rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #000;
+      cursor: pointer;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
+      transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85);
+      filter: brightness(1.04);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      padding: 2.5rem 0 3rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.7rem 0.25rem 0.3rem;
+      border-radius: 999px;
+      background: rgba(15, 18, 26, 0.85);
+      border: 1px solid rgba(245, 197, 66, 0.4);
+      margin-bottom: 1.1rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gray);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, var(--gold-soft), var(--gold));
+      box-shadow: 0 0 0 4px rgba(245, 197, 66, 0.28);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, var(--gold-soft), var(--gold), #ffb347);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      max-width: 32rem;
+      color: var(--gray);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+    }
+
+    .hero-badge-pill {
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid rgba(160, 164, 184, 0.6);
+      background: rgba(15, 18, 26, 0.85);
+      color: var(--gray);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.55rem 1.2rem;
+      border: 1px solid rgba(160, 164, 184, 0.6);
+      background: transparent;
+      color: var(--gray);
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(12, 15, 22, 0.92);
+      color: #fff;
+      border-color: rgba(245, 197, 66, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      font-size: 0.8rem;
+    }
+
+    .stat {
+      min-width: 90px;
+    }
+
+    .stat-value {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .stat-label {
+      color: var(--gray);
+      font-size: 0.75rem;
+    }
+
+    .hero-image-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 10% 0%, rgba(245, 197, 66, 0.25), transparent 45%),
+                  radial-gradient(circle at 90% 110%, rgba(255, 75, 58, 0.2), transparent 55%),
+                  linear-gradient(145deg, #07080b, #141726);
+      padding: 1.4rem 1.4rem 1.6rem;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-image-inner {
+      position: relative;
+      height: 260px;
+      border-radius: 1.1rem;
+      overflow: hidden;
+      background: radial-gradient(circle at 10% 0%, #393f59, #151823 50%, #050608 80%);
+      border: 1px solid rgba(245, 197, 66, 0.18);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 1.4rem;
+      isolation: isolate;
+    }
+
+    .hero-silhouette {
+      position: absolute;
+      inset: 12% 18% 10%;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 222, 159, 0.21), transparent 60%),
+        radial-gradient(circle at 50% 35%, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.2) 55%, transparent 80%);
+      mix-blend-mode: screen;
+      opacity: 0.78;
+    }
+
+    .hero-gradient-bar {
+      position: absolute;
+      inset: auto 10% 0;
+      height: 46%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    }
+
+    .hero-overlay-text {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .hero-overlay-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero-overlay-sub {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .hero-tag-card {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      background: rgba(10, 12, 18, 0.95);
+      padding: 0.5rem 0.8rem;
+      border-radius: 0.8rem;
+      border: 1px solid rgba(245, 197, 66, 0.45);
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 130px;
+    }
+
+    .hero-tag-label {
+      font-size: 0.7rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-tag-value {
+      font-weight: 600;
+    }
+
+    .hero-floating-card {
+      position: absolute;
+      bottom: 1.7rem;
+      right: 1.4rem;
+      background: rgba(8, 10, 16, 0.9);
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.8rem;
+      border: 1px solid rgba(160, 164, 184, 0.4);
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.08rem;
+      align-items: flex-end;
+    }
+
+    .hero-floating-highlight {
+      color: var(--gold-soft);
+      font-weight: 600;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 2rem 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+      align-items: flex-end;
+      margin-bottom: 1.3rem;
+    }
+
+    .section-title-block {
+      max-width: 420px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gray);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      font-size: 0.88rem;
+      color: var(--gray);
+      max-width: 420px;
+    }
+
+    /* FEATURES / PROGRAMS */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: radial-gradient(circle at 0 0, rgba(245, 197, 66, 0.18), transparent 55%), #0a0d16;
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.1rem 1.2rem;
+      border: 1px solid rgba(51, 57, 79, 0.9);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.95);
+      border-color: rgba(245, 197, 66, 0.7);
+      background: radial-gradient(circle at 0 0, rgba(245, 197, 66, 0.3), transparent 60%), #060811;
+    }
+
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 0.85rem;
+      background: rgba(245, 197, 66, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-text {
+      font-size: 0.82rem;
+      color: var(--gray);
+    }
+
+    /* PLANS */
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .plan {
+      background: #05070f;
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.1rem 1.3rem;
+      border: 1px solid rgba(68, 76, 109, 0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan.plan-highlight {
+      border-color: rgba(245, 197, 66, 0.9);
+      background: radial-gradient(circle at 10% 0, rgba(245, 197, 66, 0.22), transparent 55%), #070914;
+    }
+
+    .plan-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--gray);
+    }
+
+    .plan-name {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .plan-price {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .plan-price span {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--gray);
+    }
+
+    .plan-tag {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.9rem;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold-soft);
+      background: rgba(245, 197, 66, 0.12);
+      border-radius: 999px;
+      padding: 0.15rem 0.5rem;
+      border: 1px solid rgba(245, 197, 66, 0.55);
+    }
+
+    .plan-divider {
+      height: 1px;
+      background: radial-gradient(circle, rgba(245, 197, 66, 0.8), transparent);
+      margin: 0.4rem 0 0.5rem;
+      opacity: 0.6;
+    }
+
+    .plan ul {
+      list-style: none;
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-bottom: 0.7rem;
+    }
+
+    .plan li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.35rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .plan li::before {
+      content: "•";
+      color: var(--gold-soft);
+      font-size: 0.7rem;
+      line-height: 1.3;
+      margin-top: 0.1rem;
+    }
+
+    .plan button {
+      margin-top: auto;
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(160, 164, 184, 0.8);
+      background: transparent;
+      color: #fff;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .plan button:hover {
+      background: rgba(11, 14, 22, 0.95);
+      border-color: rgba(245, 197, 66, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .plan.plan-highlight button {
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      border-color: transparent;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .plan.plan-highlight button:hover {
+      filter: brightness(1.05);
+    }
+
+    /* COACHES */
+    .coaches {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .coach-card {
+      background: #05070f;
+      border-radius: var(--radius-md);
+      padding: 1rem 1rem 1.1rem;
+      border: 1px solid rgba(51, 57, 79, 0.9);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .coach-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, var(--gold-soft), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 0.1rem;
+    }
+
+    .coach-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .coach-role {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--gray);
+    }
+
+    .coach-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.3rem;
+    }
+
+    .coach-tag {
+      font-size: 0.7rem;
+      border-radius: 999px;
+      padding: 0.15rem 0.5rem;
+      background: rgba(23, 27, 41, 0.9);
+      border: 1px solid rgba(70, 77, 110, 0.9);
+      color: var(--gray);
+    }
+
+    /* CONTACT / FOOTER */
+    .contact-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      background: #05070f;
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.1rem;
+      border: 1px solid rgba(68, 76, 109, 0.9);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .contact-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-card p {
+      font-size: 0.84rem;
+      color: var(--gray);
+      margin-bottom: 0.9rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .contact-item {
+      font-size: 0.8rem;
+    }
+
+    .contact-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gray);
+      margin-bottom: 0.1rem;
+    }
+
+    .contact-value {
+      font-weight: 500;
+    }
+
+    .hours {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-bottom: 0.6rem;
+    }
+
+    .hours span {
+      color: #fff;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(51, 57, 79, 0.9);
+      margin-top: 2rem;
+      padding-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--gray);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-image-card {
+        order: -1;
+      }
+
+      .grid-3,
+      .plans,
+      .coaches {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-section {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .wrapper {
+        padding-inline: 1rem;
+      }
+
+      .grid-3,
+      .plans,
+      .coaches {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <div class="logo-icon">G</div>
+        <div>
+          <div class="logo-text-main">GOLD'S GYM</div>
+          <div class="logo-text-sub">Strength in every rep</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#programs">Programs</a>
+        <a href="#plans">Membership</a>
+        <a href="#coaches">Coaches</a>
+        <a href="#contact">Visit Us</a>
+      </div>
+      <div class="nav-cta">
+        <span class="nav-phone">📞 +91-8000-111-999</span>
+        <button class="btn-primary">Book a free session</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrapper">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="badge">
+          <div class="badge-dot"></div>
+          Official Gold's Gym Experience
+        </div>
+        <h1 class="hero-title">
+          Build a <span>stronger</span> version of yourself.
+        </h1>
+        <p class="hero-subtitle">
+          From first-time lifters to pro athletes, Gold's Gym offers world-class equipment, signature group
+          workouts, and expert coaches to guide your transformation.
+        </p>
+
+        <div class="hero-meta">
+          <div class="hero-badges">
+            <span class="hero-badge-pill">24×7 Access</span>
+            <span class="hero-badge-pill">Certified Trainers</span>
+            <span class="hero-badge-pill">Goal-based Programs</span>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <button class="btn-primary">Start 7-Day Trial</button>
+          <button class="btn-ghost">👀 View class schedule</button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-value">1965</div>
+            <div class="stat-label">Born in Venice Beach</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">700+</div>
+            <div class="stat-label">Gyms worldwide</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">4.8★</div>
+            <div class="stat-label">Member rating</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-card">
+        <div class="hero-image-inner">
+          <div class="hero-silhouette"></div>
+          <div class="hero-gradient-bar"></div>
+          <div class="hero-overlay-text">
+            <div class="hero-overlay-title">Gold's Gym</div>
+            <div class="hero-overlay-sub">Where legends are built.</div>
+          </div>
+        </div>
+        <div class="hero-tag-card">
+          <div class="hero-tag-label">Today's focus</div>
+          <div class="hero-tag-value">Push · Pull · Core Conditioning</div>
+        </div>
+        <div class="hero-floating-card">
+          <span class="hero-floating-highlight">🔥 132</span>
+          <span>Members training right now</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section id="programs">
+      <div class="section-header">
+        <div class="section-title-block">
+          <div class="section-eyebrow">Programs</div>
+          <h2 class="section-title">Train your way with purpose-built programs.</h2>
+        </div>
+        <p class="section-subtitle">
+          Whether your goal is fat loss, muscle gain, athletic performance or overall wellness, our programs
+          combine science-backed training with real-world coaching.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="card-icon">🏋️</div>
+          <h3 class="card-title">Strength & Hypertrophy</h3>
+          <p class="card-text">
+            Progressive barbell and machine-based workouts tailored to your level. Build muscle, increase strength
+            and master compound lifts with expert guidance.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🔥</div>
+          <h3 class="card-title">Gold's HIIT Burn</h3>
+          <p class="card-text">
+            High-intensity interval circuits that torch calories and boost endurance. Short, intense and designed
+            to keep your metabolism elevated long after class.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🧘</div>
+          <h3 class="card-title">Mind & Mobility</h3>
+          <p class="card-text">
+            Yoga, stretching and mobility sessions to improve posture, reduce stiffness and speed up recovery so you
+            can train harder and stay injury-free.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- MEMBERSHIP PLANS -->
+    <section id="plans">
+      <div class="section-header">
+        <div class="section-title-block">
+          <div class="section-eyebrow">Membership</div>
+          <h2 class="section-title">Simple plans for serious results.</h2>
+        </div>
+        <p class="section-subtitle">
+          Choose a plan that fits your lifestyle. All memberships include full gym access, locker facilities and
+          complimentary induction with a Gold's Gym coach.
+        </p>
+      </div>
+
+      <div class="plans">
+        <article class="plan">
+          <div class="plan-label">Starter</div>
+          <div class="plan-name">Monthly Flex</div>
+          <div class="plan-price">₹2,499 <span>/ month</span></div>
+          <div class="plan-divider"></div>
+          <ul>
+            <li>Unlimited gym floor access</li>
+            <li>1 complimentary personal training session</li>
+            <li>Access to standard group classes</li>
+          </ul>
+          <button>Choose Monthly Flex</button>
+        </article>
+
+        <article class="plan plan-highlight">
+          <div class="plan-tag">Most Popular</div>
+          <div class="plan-label">Transformation</div>
+          <div class="plan-name">6-Month Elite</div>
+          <div class="plan-price">₹11,999 <span>/ 6 months</span></div>
+          <div class="plan-divider"></div>
+          <ul>
+            <li>Priority access during peak hours</li>
+            <li>Bi-weekly body composition tracking</li>
+            <li>Custom workout & nutrition templates</li>
+            <li>Discounted personal training sessions</li>
+          </ul>
+          <button>Start Elite Journey</button>
+        </article>
+
+        <article class="plan">
+          <div class="plan-label">Commitment</div>
+          <div class="plan-name">Annual Pro</div>
+          <div class="plan-price">₹19,999 <span>/ year</span></div>
+          <div class="plan-divider"></div>
+          <ul>
+            <li>All Elite features included</li>
+            <li>Invite-a-friend guest privilege (weekends)</li>
+            <li>Exclusive Gold's Gym workshops & events</li>
+          </ul>
+          <button>Go Annual Pro</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- COACHES -->
+    <section id="coaches">
+      <div class="section-header">
+        <div class="section-title-block">
+          <div class="section-eyebrow">Coaches</div>
+          <h2 class="section-title">Guided by certified Gold's Gym trainers.</h2>
+        </div>
+        <p class="section-subtitle">
+          Our coaches blend proven training methods with real-world experience, helping you stay accountable, avoid
+          plateaus and enjoy every workout.
+        </p>
+      </div>
+
+      <div class="coaches">
+        <article class="coach-card">
+          <div class="coach-avatar">A</div>
+          <div class="coach-name">Aarav Mehta</div>
+          <div class="coach-role">Strength & Conditioning Coach</div>
+          <p class="card-text">
+            Specializes in compound lifting, strength programming and form correction for beginners and intermediates.
+          </p>
+          <div class="coach-tags">
+            <span class="coach-tag">Powerlifting</span>
+            <span class="coach-tag">Posture</span>
+          </div>
+        </article>
+
+        <article class="coach-card">
+          <div class="coach-avatar">S</div>
+          <div class="coach-name">Sara Thomas</div>
+          <div class="coach-role">Transformation Specialist</div>
+          <p class="card-text">
+            Focused on sustainable fat loss, habit building and body recomposition with realistic, lifestyle-friendly plans.
+          </p>
+          <div class="coach-tags">
+            <span class="coach-tag">Fat Loss</span>
+            <span class="coach-tag">Women’s Fitness</span>
+          </div>
+        </article>
+
+        <article class="coach-card">
+          <div class="coach-avatar">R</div>
+          <div class="coach-name">Rahul Verma</div>
+          <div class="coach-role">Performance Coach</div>
+          <p class="card-text">
+            Designs athletic and functional training for sports performance, agility and conditioning.
+          </p>
+          <div class="coach-tags">
+            <span class="coach-tag">Athletic</span>
+            <span class="coach-tag">Mobility</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <div class="section-title-block">
+          <div class="section-eyebrow">Visit Us</div>
+          <h2 class="section-title">Step into your new training ground.</h2>
+        </div>
+        <p class="section-subtitle">
+          Book a free trial workout, tour the facility and speak with a coach about your goals before you join.
+        </p>
+      </div>
+
+      <div class="contact-section">
+        <div class="contact-card">
+          <h3>Gold's Gym – Flagship Club</h3>
+          <p>
+            Experience the iconic Gold's Gym atmosphere with premium equipment, functional turf, recovery zones and a
+            motivating community.
+          </p>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="contact-label">Address</div>
+              <div class="contact-value">
+                21 Fitness Avenue,<br />
+                Downtown District, Your City
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">Contact</div>
+              <div class="contact-value">
+                +91-8000-111-999<br />
+                info@goldsgymclub.com
+              </div>
+            </div>
+          </div>
+          <div class="hours">
+            <span>Hours:</span> Mon–Sun · 5:00 AM – 11:00 PM<br />
+            <span>Peak:</span> 6–9 AM & 6–9 PM
+          </div>
+          <button class="btn-primary">Book a club tour</button>
+        </div>
+
+        <div class="contact-card">
+          <h3>Ready to get started?</h3>
+          <p>
+            Drop your preferred time and goal at the front desk or call us. Our team will match you with the right
+            coach and program.
+          </p>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="contact-label">Goal Examples</div>
+              <div class="contact-value">
+                ✓ Lose 5–10 kg<br />
+                ✓ Build lean muscle<br />
+                ✓ Improve energy & posture
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">What to Bring</div>
+              <div class="contact-value">
+                Training shoes, water bottle,<br />
+                comfortable clothes and a towel.
+              </div>
+            </div>
+          </div>
+          <p class="hours">
+            New member orientation sessions run every <span>Monday, Wednesday & Saturday</span>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© 2025 Gold's Gym – Concept website demo. All trademarks belong to their respective owners.</span>
+      <div class="footer-links">
+        <a href="#programs">Programs</a>
+        <a href="#plans">Membership</a>
+        <a href="#coaches">Coaches</a>
+        <a href="#contact">Visit</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
